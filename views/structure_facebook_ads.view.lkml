@@ -109,8 +109,31 @@ dimension: objective {
 
 dimension: offsite_conv_fb_pixel_purchase {
   type: string
-  sql: ${TABLE}.offsite_conv_fb_pixel_purchase ;;
+  sql: case
+  when ${TABLE}.offsite_conv_fb_pixel_purchase='NA'
+  then CAST(null as NUMERIC)
+  else CAST(${TABLE}.offsite_conv_fb_pixel_purchase AS NUMERIC)
+  end ;;
 }
+
+  measure: total_conversion {
+    type:  sum
+    sql: ${offsite_conv_fb_pixel_purchase} ;;
+  }
+
+  dimension: offsite_conv_fb_pixel_purchase_value {
+    type: string
+    sql: case
+    when ${TABLE}.offsite_conv_fb_pixel_purchase_value='NA'
+    then CAST(null as NUMERIC)
+    else CAST(${TABLE}.offsite_conv_fb_pixel_purchase_value AS NUMERIC)
+    end ;;
+  }
+
+  measure: total_revenue {
+    type:  sum
+    sql: ${offsite_conv_fb_pixel_purchase_value} ;;
+  }
 
 dimension: reach {
   type: string
