@@ -9,7 +9,7 @@ view: dj_facebook_ads {
     type:  string
     sql: Case
     when ${campaign_name} like "%DR%" OR ${campaign_name} like "%remarketing%" then "Performance"
-    when ${campaign_name} like "%Programs%" then "Tactical/Campaign"
+    when ${campaign_name} like "%Programs%" then "Programs"
     when ${campaign_name} like "%Boosting%" then "PR Content"
     when ${campaign_name} like "%Social%" then "PR Content"
     when SPLIT(${campaign_name}, '_')[SAFE_OFFSET(3)] = "Menswear" then "Men"
