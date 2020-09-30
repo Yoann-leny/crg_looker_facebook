@@ -20,6 +20,7 @@ view: dj_facebook_ads {
 
   dimension: campaign_name_abr {
     type:  string
+    label: "Campaign Name"
     sql: ifnull(SPLIT(${campaign_name}, '_')[SAFE_OFFSET(2)],"")
     ||" "||ifnull(SPLIT(${campaign_name}, '_')[SAFE_OFFSET(3)] ,"")
     ||" "||ifnull(SPLIT(${campaign_name}, '_')[SAFE_OFFSET(4)] ,"")
