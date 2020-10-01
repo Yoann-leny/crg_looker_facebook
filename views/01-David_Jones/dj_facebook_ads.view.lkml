@@ -8,7 +8,7 @@ view: dj_facebook_ads {
   dimension: campaign_category {
     type:  string
     sql: Case
-    when ${campaign_name} like "%DR%" OR ${campaign_name} like "%remarketing%" then "Performance"
+    when ${campaign_name} like "%DR%" OR ${campaign_name} like "%remarketing%" then "Programs"
     when ${campaign_name} like "%Programs%" then "Programs"
     when ${campaign_name} like "%Boosting%" then "PR Content"
     when ${campaign_name} like "%Social%" then "PR Content"
