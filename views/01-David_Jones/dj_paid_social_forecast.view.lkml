@@ -1,35 +1,62 @@
 view: dj_paid_social_forecast {
 
-  sql_table_name: select *
-    from `@{DJ_PROJECT_NAME}.@{DJ_FORECAST_DATASET}.paid_social_forecast` dj_paid_social_forecast;;
+  sql_table_name: `crg-dclk-dt.@{DJ_FORECAST_DATASET}.paid_social_forecast` ;;
 
   dimension: week_start_date {
-    type: date_raw
+    type: string
     sql: ${TABLE}.week_start_date;;
-  }
-
-  dimension: budget_target {
+  }    dimension: budget_target_dim {
+    hidden: yes
     type: number
     sql: ${TABLE}.budget_target ;;
   }
 
-  dimension: impressions_target {
+  measure: budget_target {
+    type: sum
+    sql:${budget_target_dim} ;;
+  }
+
+  dimension: impressions_target_dim {
+    hidden: yes
     type: number
     sql: ${TABLE}.Impressions_Target ;;
   }
 
-  dimension: clicks_target {
+  measure: impressions_target {
+    type: sum
+    sql:${impressions_target_dim} ;;
+  }
+
+  dimension: clicks_target_dim {
+    hidden: yes
     type: number
     sql: ${TABLE}.Clicks_Target ;;
   }
 
-  dimension: transactions_target {
+  measure: clicks_target {
+    type: sum
+    sql:${clicks_target_dim} ;;
+  }
+
+  dimension: transactions_target_dim {
+    hidden: yes
     type: number
     sql: ${TABLE}.Transactions_Target ;;
   }
 
-  dimension: revenue_target {
+  measure: transactions_target {
+    type: sum
+    sql:${transactions_target_dim} ;;
+  }
+
+  dimension: revenue_target_dim {
+    hidden: yes
     type: number
     sql: ${TABLE}.Revenue_Target ;;
+  }
+
+  measure: revenue_target {
+    type: sum
+    sql:${revenue_target_dim} ;;
   }
 }

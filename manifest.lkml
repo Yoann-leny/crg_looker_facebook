@@ -14,7 +14,7 @@ constant: DJ_DATASET_NAME {
   export: override_optional
 }
 constant: DJ_FORECAST_DATASET {
-  value: "paid_social_forecast"
+  value: "01_forecasting_data"
   export: override_optional
 }
 
